@@ -1,0 +1,1 @@
+// looks like the notetaker html routes except you use router not app

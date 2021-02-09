@@ -42,3 +42,7 @@ const API = {
     return json;
   },
 };
+
+// clue of the routes I need to write
+// fetch new way to write AJAX. 
+// fetch clue that this is a front end file
