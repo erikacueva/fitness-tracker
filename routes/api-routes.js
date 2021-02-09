@@ -1,3 +1,4 @@
+// back end code
 const router = require("express").Router();
 const { Workout } = require("../models");
 
@@ -12,8 +13,16 @@ router.post("/api/workouts", ({ body }, res) => {
 });
 
 router.get("/api/workouts", (req, res) => {
-    // use aggregates
-  Workout.find({})
+  // use aggregates
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
+      },
+    },
+  ])
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -23,8 +32,15 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-    // use aggregates
-  Workout.find({})
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
+      },
+    },
+  ])
     .sort({ day: -1 })
     .then((dbWorkout) => {
       res.json(dbWorkout);
@@ -34,7 +50,6 @@ router.get("/api/workouts/range", (req, res) => {
     });
 });
 
-// see line 16 on api.js
 router.put("/api/workouts/:id", (req, res) => {
   Workout.findOneAndUpdate(
     { _id: req.params.id },
