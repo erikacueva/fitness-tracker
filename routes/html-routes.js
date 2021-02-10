@@ -1,7 +1,7 @@
 
 var path = require("path");
+const router = require("express").Router();
 
-module.exports = function(Router) {
 
     // HTML GET Requests
 
@@ -18,4 +18,5 @@ module.exports = function(Router) {
     });
 
 
-};
+    module.exports = router;
+
