@@ -41,7 +41,7 @@ router.get("/api/workouts/range", (req, res) => {
       },
     },
   ])
-    .sort({ day: -1 })
+    .sort({ _id: -1 }).limit(7)
     .then((dbWorkouts) => {
       res.json(dbWorkouts);
     })
@@ -52,7 +52,7 @@ router.get("/api/workouts/range", (req, res) => {
 
 router.put("/api/workouts/:id", (req, res) => {
   Workout.findByIdAndUpdate(
-    { _id: req.params.id },
+    req.params.id,
     { $push: { exercises: req.body } },
     {
       runValidators: true,
