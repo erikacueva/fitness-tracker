@@ -1,5 +1,6 @@
-var path = require("path");
 const router = require("express").Router();
+var path = require("path");
+
 
 // HTML GET Requests
 
