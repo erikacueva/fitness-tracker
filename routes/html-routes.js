@@ -1,22 +1,20 @@
-
 var path = require("path");
 const router = require("express").Router();
 
+// HTML GET Requests
 
-    // HTML GET Requests
+router.get("/exercise", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/exercise.html"));
+});
 
-    router.get("/exercise", function (req, res){
+// if not matching route is found default to index
 
-        res.sendFile(path.join(__dirname, "../public/exercise.html"));
-    });
+router.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
 
-    // if not matching route is found default to index
+router.get("/stats", function (req, res) {
+  res.sendFile(path.join(__dirname, "../public/stats.html"));
+});
 
-    router.get("*", function (req, res){
-
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
-
-
-    module.exports = router;
-
+module.exports = router;

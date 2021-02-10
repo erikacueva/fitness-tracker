@@ -44,5 +44,5 @@ const API = {
 };
 
 // clue of the routes I need to write
-// fetch new way to write AJAX. 
-// fetch clue that this is a front end file
+// fetch is the new way to write AJAX. 
+// fetch is clue that this is a front end file
